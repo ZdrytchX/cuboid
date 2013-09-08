@@ -1031,6 +1031,10 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
     return;
   }
 
+  //Don't kill youself when luci jumping so easily
+  if ( mod == MOD_LCANNON_SPLASH && targ == attacker ) {
+		damage *= 0.5;
+
   // check for completely getting out of the damage
   if( !( dflags & DAMAGE_NO_PROTECTION ) )
   {
