@@ -1359,6 +1359,9 @@ typedef struct
   qhandle_t   alienHatchPS;
   sfxHandle_t alienHatchSound;
   sfxHandle_t alienFailedHatchSound;
+
+  //ZdrytchX's Extras
+  sfxHandle_t hitSound[ 10 ];
 } cgMedia_t;
 
 typedef struct
@@ -1585,6 +1588,9 @@ extern  vmCvar_t    cg_sprintToggle;
 extern  vmCvar_t    cg_unlagged;
 
 extern  vmCvar_t    cg_debugVoices;
+
+//ZdrytchX's Extras
+extern  vmCvar_t    cg_hitsound;
 
 extern  vmCvar_t    ui_currentClass;
 extern  vmCvar_t    ui_carriage;
