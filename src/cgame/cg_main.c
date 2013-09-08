@@ -208,6 +208,9 @@ vmCvar_t  cg_unlagged;
 
 vmCvar_t  cg_debugVoices;
 
+//ZdrytchX's Extras
+vmCvar_t  cg_hitsound;
+
 vmCvar_t  ui_currentClass;
 vmCvar_t  ui_carriage;
 vmCvar_t  ui_stages;
@@ -384,7 +387,10 @@ static cvarTable_t cvarTable[ ] =
   
   { &cg_fuelInfoX, "cg_fuelInfoX" ,"0", CVAR_ARCHIVE },
   { &cg_fuelInfoY, "cg_fuelInfoY" ,"150", CVAR_ARCHIVE },
-  { &cg_fuelInfoScale, "cg_fuelInfoScale" ,"0.5", CVAR_ARCHIVE }  
+  { &cg_fuelInfoScale, "cg_fuelInfoScale" ,"0.5", CVAR_ARCHIVE },
+
+//ZdrytchX's Extras
+  { &cg_hitsound, "cg_hitsound", "3", CVAR_ARCHIVE},
 };
 
 static int   cvarTableSize = sizeof( cvarTable ) / sizeof( cvarTable[0] );
@@ -720,6 +726,18 @@ static void CG_RegisterSounds( void )
 
   cgs.media.humanBuildableExplosion = trap_S_RegisterSound( "sound/buildables/human/explosion.wav", qfalse );
   cgs.media.humanBuildablePrebuild  = trap_S_RegisterSound( "sound/buildables/human/prebuild.wav", qfalse );
+
+//ZdrytchX's Extras
+  cgs.media.hitSound[0] = trap_S_RegisterSound( "sound/feedback/hit4.wav", qfalse );
+  cgs.media.hitSound[1] = trap_S_RegisterSound( "sound/feedback/hit8.wav", qfalse );
+  cgs.media.hitSound[2] = trap_S_RegisterSound( "sound/feedback/hit12.wav", qfalse );
+  cgs.media.hitSound[3] = trap_S_RegisterSound( "sound/feedback/hit25.wav", qfalse );
+  cgs.media.hitSound[4] = trap_S_RegisterSound( "sound/feedback/hit.wav", qfalse  );
+  cgs.media.hitSound[5] = trap_S_RegisterSound( "sound/feedback/hit75.wav", qfalse  );
+  cgs.media.hitSound[6] = trap_S_RegisterSound( "sound/feedback/hit100.wav", qfalse  );
+  cgs.media.hitSound[7] = trap_S_RegisterSound( "sound/feedback/hit125.wav", qfalse  );
+  cgs.media.hitSound[8] = trap_S_RegisterSound( "sound/feedback/hit150.wav", qfalse  );
+  cgs.media.hitSound[9] = trap_S_RegisterSound( "sound/feedback/hitcrit.wav", qfalse  );
 
   for( i = 0; i < 4; i++ )
     cgs.media.humanBuildableDamage[ i ] = trap_S_RegisterSound(
