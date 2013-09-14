@@ -1225,6 +1225,10 @@ extern  vmCvar_t  g_cuboidSizeLimit;
 extern  vmCvar_t  g_buildableDensityLimit;
 extern  vmCvar_t  g_buildableDensityLimitRange;
 
+//Hitsounds can be controlled by server
+extern  vmCvar_t  g_hitsounds;
+extern  vmCvar_t  g_hitsounds_type;
+
 
 void      trap_Print( const char *fmt );
 void      trap_Error( const char *fmt );
