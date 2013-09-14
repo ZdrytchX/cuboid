@@ -157,6 +157,10 @@ vmCvar_t  g_cuboidMode;
 vmCvar_t  g_buildableDensityLimit;
 vmCvar_t  g_buildableDensityLimitRange;
 
+//ZdrytchX's Extras
+vmCvar_t  g_hitsounds;
+vmCvar_t  g_hitsounds_type;
+
 // copy cvars that can be set in worldspawn so they can be restored later
 static char cv_gravity[ MAX_CVAR_VALUE_STRING ];
 static char cv_humanMaxStage[ MAX_CVAR_VALUE_STRING ];
@@ -299,7 +303,13 @@ static cvarTable_t   gameCvarTable[ ] =
   { &g_cuboidMode, "g_cuboidMode", "0", CVAR_ARCHIVE, 0, qfalse },
   
   { &g_buildableDensityLimit, "g_buildableDensityLimit", "0", CVAR_ARCHIVE, 0, qfalse },
-  { &g_buildableDensityLimitRange, "g_buildableDensityLimitRange", "0", CVAR_ARCHIVE, 0, qfalse }
+  { &g_buildableDensityLimitRange, "g_buildableDensityLimitRange", "0", CVAR_ARCHIVE, 0, qfalse },
+
+//ZdrytchX
+  { &g_hitsounds, "g_hitsounds",                                 "1", CVAR_ARCHIVE, 0, qfalse },
+  //g_hitsounds_type is an bitfield variable from 0-7
+  //4 = No teammates, 2 = no buildables, 1 = monotone
+  { &g_hitsounds_type, "g_hitsounds_type",                       "4", CVAR_ARCHIVE, 0, qfalse },
 };
 
 static int gameCvarTableSize = sizeof( gameCvarTable ) / sizeof( gameCvarTable[ 0 ] );
