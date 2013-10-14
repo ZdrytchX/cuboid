@@ -245,11 +245,77 @@ CG_CheckLocalSounds
 */
 void CG_CheckLocalSounds( playerState_t *ps, playerState_t *ops )
 {
-  int reward;
+  int reward, delta;
 
   // don't play the sounds if the player just spawned
   if( ps->persistant[ PERS_SPECSTATE ] != ops->persistant[ PERS_SPECSTATE ] )
     return;
+
+    //hitsound
+		delta = ps->persistant[PERS_HITS] - ops->persistant[PERS_HITS];
+    
+    if (cg_hitsound.integer == 3)
+    {if (delta > 165) //125
+			trap_S_StartLocalSound( cgs.media.hitSound[8], CHAN_LOCAL_SOUND );
+		else if (delta > 120) //100
+			trap_S_StartLocalSound( cgs.media.hitSound[7], CHAN_LOCAL_SOUND );
+		else if (delta > 85) //75
+			trap_S_StartLocalSound( cgs.media.hitSound[6], CHAN_LOCAL_SOUND );
+		else if (delta > 50)
+			trap_S_StartLocalSound( cgs.media.hitSound[5], CHAN_LOCAL_SOUND );
+		else if (delta > 25)
+			trap_S_StartLocalSound( cgs.media.hitSound[4], CHAN_LOCAL_SOUND );
+		else if (delta > 12)
+			trap_S_StartLocalSound( cgs.media.hitSound[3], CHAN_LOCAL_SOUND );
+		else if (delta > 8)
+			trap_S_StartLocalSound( cgs.media.hitSound[2], CHAN_LOCAL_SOUND );
+		else if (delta > 4)
+			trap_S_StartLocalSound( cgs.media.hitSound[1], CHAN_LOCAL_SOUND );
+	  else if (delta > 0) //0 = no events
+			trap_S_StartLocalSound( cgs.media.hitSound[0], CHAN_LOCAL_SOUND );
+	  }
+	  else if (cg_hitsound.integer == 2)
+	  { if (delta > 8)
+			trap_S_StartLocalSound( cgs.media.hitSound[8], CHAN_LOCAL_SOUND );
+		else if (delta > 7)
+			trap_S_StartLocalSound( cgs.media.hitSound[7], CHAN_LOCAL_SOUND );
+		else if (delta > 6)
+			trap_S_StartLocalSound( cgs.media.hitSound[6], CHAN_LOCAL_SOUND );
+		else if (delta > 5)
+			trap_S_StartLocalSound( cgs.media.hitSound[5], CHAN_LOCAL_SOUND );
+		else if (delta > 4)
+			trap_S_StartLocalSound( cgs.media.hitSound[4], CHAN_LOCAL_SOUND );
+		else if (delta > 3)
+			trap_S_StartLocalSound( cgs.media.hitSound[3], CHAN_LOCAL_SOUND );
+		else if (delta > 2)
+			trap_S_StartLocalSound( cgs.media.hitSound[2], CHAN_LOCAL_SOUND );
+		else if (delta > 1)
+			trap_S_StartLocalSound( cgs.media.hitSound[1], CHAN_LOCAL_SOUND );
+	  else if (delta > 0) //0 = no events
+			trap_S_StartLocalSound( cgs.media.hitSound[0], CHAN_LOCAL_SOUND );
+	  }
+	  else if (cg_hitsound.integer && (delta > 0)) //no tonal change
+			trap_S_StartLocalSound( cgs.media.hitSound[4], CHAN_LOCAL_SOUND );
+
+  //health changes of more than -1 should make pain sounds
+  //and don't play hurt sound if evolving
+  if( ps->stats[ STAT_HEALTH ] < ops->stats[ STAT_HEALTH ] - 1
+  && ps->stats[ STAT_PCLASS ] == ops->stats[ STAT_PCLASS ] )
+  {
+  float healthlost = ((ops->stats[ STAT_HEALTH ] - ps->stats[ STAT_HEALTH ])/ps->stats[ STAT_MAX_HEALTH ]);
+    if( ps->stats[ STAT_HEALTH ] > 0 ){
+      CG_PainEvent( &cg.predictedPlayerEntity, ps->stats[ STAT_HEALTH ] );
+      //play critical hit! sound if lost > 30% hp
+      if (healthlost > 0.3)
+      trap_S_StartLocalSound( cgs.media.hitSound[9], CHAN_LOCAL_SOUND );
+    }
+  }
+  //Don't spam it if the user is spamming spacebar up a stair (Urasai! Annoying!)
+  if(cg_doublejumpsound.integer &&
+    ps->persistant[PERS_DOUBLEJUMPED] > ops->persistant[PERS_DOUBLEJUMPED])
+  {
+	  trap_S_StartLocalSound( cgs.media.doublejumpsound, CHAN_LOCAL_SOUND );
+  }
 
   // health changes of more than -1 should make pain sounds
   if( ps->stats[ STAT_HEALTH ] < ops->stats[ STAT_HEALTH ] - 1 )

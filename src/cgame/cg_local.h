@@ -1614,6 +1614,14 @@ extern  vmCvar_t    cg_fuelInfoX;
 extern  vmCvar_t    cg_fuelInfoY;
 extern  vmCvar_t    cg_fuelInfoScale;
 
+//ZdrytchX
+
+extern  vmCvar_t    cg_thirdpersonheight;
+extern  vmCvar_t    cg_firstpersonanglefix_yaw;
+extern  vmCvar_t    cg_firstpersonanglefix_pitch;
+extern  vmCvar_t    cg_hitsound;
+extern  vmCvar_t    cg_doublejumpsound;
+
 //
 // cg_main.c
 //
