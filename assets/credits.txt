@@ -17,8 +17,6 @@ GAMEPLAY:
 - Upp'd human spawn build time to compensate for egg BT going up
 - Dwn'd human reactor build time from 30 to 26 secs (felt like forever for some people)
 - Upp'd alien OM BT from 20 secs to 24 secs (to restrict alien manouvreability)
-- Temporarily fixed GPP armour system and upp'd goon pounce back to default (100 dmg), if I am
-    correct dragoons should 3-hit kill larmours, 4-hit kill full-armoured and 5-hit kill bsuits
 - Nerf'd Rant Trample (75 -> 56), but added a constant value (15) so it's more useful when charge
     meter is low, overall it does slightly more damage but less at the start)
 - Buff'd Rant bomb versus players only (150 -> 200, versus structures is the same)
@@ -26,6 +24,10 @@ GAMEPLAY:
 - Brought Marauder walljump speed limit back to vanilla
 - Capped cuboid volume to a million units cubed (100 unit sides)
 - Reverted Zap to vanilla GPP (apparently he hadn't updated the git source and still had the 100 times per second taser style)
+
+Added temp. but removed for actual build:
+- Temporarily fixed GPP armour system and upp'd goon pounce back to default (100 dmg), if I am
+    correct dragoons should 3-hit kill larmours, 4-hit kill full-armoured and 5-hit kill bsuits
 
 CLIENT:
 - Finished off Hitsounds that wasn't accepted

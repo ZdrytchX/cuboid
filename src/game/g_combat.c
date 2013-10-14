@@ -705,7 +705,7 @@ static float GetNonLocDamageModifier( gentity_t *targ, int class )
   }
 
   modifier = !scale ? 1.0f : 1.0f + ( modifier / scale - 1.0f ) * area;
-  
+ /* 
   if(mod != MOD_LEVEL2_ZAP || mod != MOD_POISON || mod != MOD_LEVEL1_PCLOUD)
   {
   //ZdrytchX: Make non-loc damage weaker
@@ -714,7 +714,7 @@ static float GetNonLocDamageModifier( gentity_t *targ, int class )
   if(modifier < 0.2)
   modifier = 0.2;
   }
-  
+  */
   if( g_debugDamage.integer > 1 )
     G_Printf( "GetNonLocDamageModifier() modifier:%f, area:%f, scale:%f\n",
               modifier, area, scale );

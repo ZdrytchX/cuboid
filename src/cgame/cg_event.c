@@ -305,16 +305,18 @@ static void CG_Obituary( entityState_t *ent )
         message2 = className;
         break;
       case MOD_LEVEL3_POUNCE:
-        message = "had his lovely face munted as";
+        message = "had his lovely face munted as";/*
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL3 )->humanName );
-        message2 = className" flew past";
+        message2 = className*/
+        message2 = "'s dragoon flew past";
         break;
       case MOD_LEVEL3_BOUNCEBALL:
         message = "almost caught";
-        Com_sprintf( className, 64, "'s %s",
+        /*Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL3 )->humanName );
-        message2 = className" acid barb";
+        message2 = className;*/
+        message2 = "'s acid barb";
         break;
       case MOD_LEVEL4_CLAW:
         message = "was filleted by";

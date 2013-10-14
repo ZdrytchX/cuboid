@@ -300,7 +300,7 @@ void CG_CheckLocalSounds( playerState_t *ps, playerState_t *ops )
   //health changes of more than -1 should make pain sounds
   //and don't play hurt sound if evolving
   if( ps->stats[ STAT_HEALTH ] < ops->stats[ STAT_HEALTH ] - 1
-  && ps->stats[ STAT_PCLASS ] == ops->stats[ STAT_PCLASS ] )
+  && ps->stats[ STAT_CLASS ] == ops->stats[ STAT_CLASS ] )
   {
   float healthlost = ((ops->stats[ STAT_HEALTH ] - ps->stats[ STAT_HEALTH ])/ps->stats[ STAT_MAX_HEALTH ]);
     if( ps->stats[ STAT_HEALTH ] > 0 ){

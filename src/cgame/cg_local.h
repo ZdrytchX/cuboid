@@ -1359,6 +1359,12 @@ typedef struct
   qhandle_t   alienHatchPS;
   sfxHandle_t alienHatchSound;
   sfxHandle_t alienFailedHatchSound;
+
+//ZdrytchX
+  //hitsound
+  sfxHandle_t hitSound[ 10 ];
+  //doublejump
+  sfxHandle_t doublejumpsound;
 } cgMedia_t;
 
 typedef struct
