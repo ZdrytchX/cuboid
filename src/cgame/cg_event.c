@@ -222,113 +222,123 @@ static void CG_Obituary( entityState_t *ent )
         message = "was sawn by";
         break;
       case MOD_BLASTER:
-        message = "was blasted by";
+        message = "was humiliated by";
+        message2 = "'s blaster";
         break;
       case MOD_MACHINEGUN:
-        message = "was machinegunned by";
+        message = "was skewed full of holes by";
+        message2 = "'s rifle";
         break;
       case MOD_CHAINGUN:
-        message = "was chaingunned by";
+        message = "was mowed down by";
+        message2 = "'s chaingun";
         break;
       case MOD_SHOTGUN:
-        message = "was gunned down by";
+        message = "was torn apart from the force of";
+        message2 = "'s chaingun";
         break;
       case MOD_PRIFLE:
-        message = "was pulse rifled by";
+        message = "couldn't run from";
+        message2 = "'s pulse rifle";
         break;
       case MOD_MDRIVER:
-        message = "was mass driven by";
+        message = "learnt a lesson in";
+        message2 = "'s modern physics class";
         break;
       case MOD_LASGUN:
-        message = "was lasgunned by";
+        message = "felt";
+        message2 = "'s light";
         break;
       case MOD_FLAMER:
-        message = "was grilled by";
+        message = "'s face was cooked by";
         message2 = "'s flamer";
         break;
       case MOD_FLAMER_SPLASH:
-        message = "was toasted by";
-        message2 = "'s flamer";
+        message = "got caught near";
+        message2 = "'s flame stream";
         break;
       case MOD_LCANNON:
-        message = "felt the full force of";
-        message2 = "'s lucifer cannon";
+        message = "saw";
+        message2 = "'s pretty star come too close";
         break;
       case MOD_LCANNON_SPLASH:
-        message = "was caught in the fallout of";
-        message2 = "'s lucifer cannon";
+        message = "was blown up by the vicinity of";
+        message2 = "'s ^3exploding sun";
         break;
       case MOD_GRENADE:
-        message = "couldn't escape";
-        message2 = "'s grenade";
+        message = "didn't notice that";
+        message2 = " dropped the bottle";
         break;
 
       case MOD_ABUILDER_CLAW:
-        message = "should leave";
-        message2 = "'s buildings alone";
+        message = "was fully owned by";
+        message2 = "'s ^2granger";
         break;
       case MOD_LEVEL0_BITE:
-        message = "was bitten by";
+        message = "was nibbled by";
+	      message2 = "'s ^3dretch";
         break;
       case MOD_LEVEL1_CLAW:
-        message = "was swiped by";
+        message = "was assasinated gracefully by";
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL1 )->humanName );
         message2 = className;
         break;
       case MOD_LEVEL2_CLAW:
-        message = "was clawed by";
-        Com_sprintf( className, 64, "'s %s",
+        message = "had noticed his body parts suddenly went missing as";
+/*        Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL2 )->humanName );
-        message2 = className;
+        message2 = className;*/
+        message2 = " attempted to closen their distance";
         break;
       case MOD_LEVEL2_ZAP:
-        message = "was zapped by";
+        message = "'s life energy was drained by";/*
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL2 )->humanName );
-        message2 = className;
+        message2 = className;*/
+        message2 = "'s blue light beam";
         break;
       case MOD_LEVEL3_CLAW:
-        message = "was chomped by";
+        message = "had been decapitated by the awe of";
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL3 )->humanName );
         message2 = className;
         break;
       case MOD_LEVEL3_POUNCE:
-        message = "was pounced upon by";
+        message = "had his lovely face munted as";
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL3 )->humanName );
-        message2 = className;
+        message2 = className" flew past";
         break;
       case MOD_LEVEL3_BOUNCEBALL:
-        message = "was sniped by";
+        message = "almost caught";
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL3 )->humanName );
-        message2 = className;
+        message2 = className" acid barb";
         break;
       case MOD_LEVEL4_CLAW:
-        message = "was mauled by";
+        message = "was filleted by";
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL4 )->humanName );
         message2 = className;
         break;
       case MOD_LEVEL4_TRAMPLE:
-        message = "should have gotten out of the way of";
+        message = " should've ran when he heard";
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL4 )->humanName );
         message2 = className;
         break;
       case MOD_LEVEL4_CRUSH:
-        message = "was crushed under";
-        message2 = "'s weight";
+        message = "became";
+        message2 = "'s cusion";
         break;
 
       case MOD_POISON:
-        message = "should have used a medkit against";
-        message2 = "'s poison";
+        message = "had became unfortunate from";
+        message2 = "'s infection";
         break;
       case MOD_LEVEL1_PCLOUD:
-        message = "was gassed by";
+        message = "was drugged by";
         Com_sprintf( className, 64, "'s %s",
             BG_ClassConfig( PCL_ALIEN_LEVEL1 )->humanName );
         message2 = className;
@@ -344,11 +354,11 @@ static void CG_Obituary( entityState_t *ent )
         break;
 
       case MOD_TELEFRAG:
-        message = "tried to invade";
-        message2 = "'s personal space";
+        message = "should've moved from the teleporter when";
+        message2 = " arrived";
         break;
       default:
-        message = "was killed by";
+        message = "was murdered by";
         break;
     }
 
@@ -360,7 +370,7 @@ static void CG_Obituary( entityState_t *ent )
         attackerName, message2 );
       if( teamKill && attacker == cg.clientNum )
       {
-        CG_CenterPrint( va ( "You killed " S_COLOR_RED "TEAMMATE "
+        CG_CenterPrint( va ( "You screwed " S_COLOR_RED "TEAMMATE "
           S_COLOR_WHITE "%s", targetName ),
           SCREEN_HEIGHT * 0.30, BIGCHAR_WIDTH );
       }
@@ -369,7 +379,7 @@ static void CG_Obituary( entityState_t *ent )
   }
 
   // we don't know what it was
-  CG_Printf( "%s" S_COLOR_WHITE " died\n", targetName );
+  CG_Printf( "%s" S_COLOR_WHITE " pressed a red button on his ipad's screen.\n", targetName );
 }
 
 

@@ -1373,7 +1373,7 @@ void G_ChargeAttack( gentity_t *ent, gentity_t *victim )
   WideBloodSpurt( ent, victim, NULL );
 
   damage = LEVEL4_TRAMPLE_DMG * ent->client->ps.stats[ STAT_MISC ] /
-           LEVEL4_TRAMPLE_DURATION;
+           LEVEL4_TRAMPLE_DURATION + LEVEL4_TRAMPLE_EXTRA;
 
   G_Damage( victim, ent, ent, forward, victim->s.origin, damage,
             DAMAGE_NO_LOCDAMAGE, MOD_LEVEL4_TRAMPLE );

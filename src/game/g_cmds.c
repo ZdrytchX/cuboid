@@ -2515,6 +2515,8 @@ qboolean Cmd_CheckCuboidSize(vec3_t dims)
  if(g_cuboidSizeLimit.integer)
   if(dims[0]>g_cuboidSizeLimit.integer||dims[1]>g_cuboidSizeLimit.integer||dims[2]>g_cuboidSizeLimit.integer)
    return qfalse;
+ if(dims[0]*dims[1]*dims[2]>CUBOID_MAXVOLUME)
+   return qfalse;
  if(dims[0]*dims[1]*dims[2]<CUBOID_MINVOLUME)
    return qfalse;
  if(dims[0]<1||dims[1]<1||dims[2]<1)

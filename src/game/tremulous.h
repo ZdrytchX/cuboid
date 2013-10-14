@@ -82,15 +82,27 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define LEVEL2_CLAW_K_SCALE         1.0f
 #define LEVEL2_CLAW_U_REPEAT        400
 #define LEVEL2_CLAW_U_K_SCALE       1.0f
-#define LEVEL2_AREAZAP_DMG          6 //ADM(60)
+//Note: this deals 10 dmg/s on new system
+/*
+#define LEVEL2_AREAZAP_DMG          6
 #define LEVEL2_AREAZAP_RANGE        200.0f
 #define LEVEL2_AREAZAP_CHAIN_RANGE  150.0f
 #define LEVEL2_AREAZAP_CHAIN_FALLOFF 8.0f
 #define LEVEL2_AREAZAP_WIDTH        15.0f
-#define LEVEL2_AREAZAP_REPEAT       100 //1500
-#define LEVEL2_AREAZAP_TIME         100 //1000
+#define LEVEL2_AREAZAP_REPEAT       100
+#define LEVEL2_AREAZAP_TIME         100
 #define LEVEL2_AREAZAP_MAX_TARGETS  5
-#define LEVEL2_WALLJUMP_MAXSPEED    1000.0f
+*/
+#define LEVEL2_AREAZAP_DMG          ADM(60)
+#define LEVEL2_AREAZAP_RANGE        200.0f
+#define LEVEL2_AREAZAP_CHAIN_RANGE  150.0f
+#define LEVEL2_AREAZAP_CHAIN_FALLOFF 8.0f
+#define LEVEL2_AREAZAP_WIDTH        15.0f
+#define LEVEL2_AREAZAP_REPEAT       1500
+#define LEVEL2_AREAZAP_TIME         1000
+#define LEVEL2_AREAZAP_MAX_TARGETS  5
+#define LEVEL2_WALLJUMP_MAXSPEED    1280.0f
+
 
 #define LEVEL3_CLAW_DMG             ADM(80)
 #define LEVEL3_CLAW_RANGE           80.0f
@@ -100,7 +112,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define LEVEL3_CLAW_K_SCALE         1.0f
 #define LEVEL3_CLAW_U_REPEAT        800
 #define LEVEL3_CLAW_U_K_SCALE       1.0f
-#define LEVEL3_POUNCE_DMG           ADM(75) //ADM(100)
+#define LEVEL3_POUNCE_DMG           ADM(100) //I square'd the armour modifier for non-loc damage btw
 #define LEVEL3_POUNCE_RANGE         48.0f
 #define LEVEL3_POUNCE_UPG_RANGE     LEVEL3_POUNCE_RANGE + 3.0f
 #define LEVEL3_POUNCE_WIDTH         14.0f
@@ -124,7 +136,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define LEVEL4_CLAW_REPEAT          800
 #define LEVEL4_CLAW_K_SCALE         1.0f
 
-#define LEVEL4_TRAMPLE_DMG             ADM(75)
+#define LEVEL4_TRAMPLE_DMG             ADM(56)
+#define LEVEL4_TRAMPLE_EXTRA           15    // useful when charge levels go down
 #define LEVEL4_TRAMPLE_SPEED           2.0f
 #define LEVEL4_TRAMPLE_CHARGE_MIN      375   // minimum msec to start a charge
 #define LEVEL4_TRAMPLE_CHARGE_MAX      1000  // msec to maximum charge stored
@@ -137,10 +150,11 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define LEVEL4_CRUSH_DAMAGE            120   // to players only
 #define LEVEL4_CRUSH_REPEAT            500   // player damage repeat
 
-#define LEVEL4_BOMB_DMG                150
+#define LEVEL4_BOMB_DMG                200    //150 -> 200 (KoRx def. because it's more useful in combat)
+#define LEVEL4_BOMB_DMG_BUILD_MOD      0.75f  //modifier versus buildables (KoRx used 0.5)
 #define LEVEL4_BOMB_RADIUS             400 
 #define LEVEL4_BOMB_SPEED              500.0f
-#define LEVEL4_BOMB_REGEN              120000 // minimum time between getting a bomb
+#define LEVEL4_BOMB_REGEN              90000  // minimum time between getting a bomb
 
 /*
  * ALIEN classes
@@ -247,7 +261,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define PCLOUD_ARMOUR_MODIFIER      0.75f
 
 #define ASPAWN_BP                   10
-#define ASPAWN_BT                   10000
+#define ASPAWN_BT                   18000 //Stop egg spamming once overmind goes up
 #define ASPAWN_HEALTH               ABHM(250)
 #define ASPAWN_REGEN                8
 #define ASPAWN_SPLASHDAMAGE         50
@@ -267,7 +281,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define BARRICADE_VALUE             ABVM(BARRICADE_BP)
 
 #define BOOSTER_BP                  12
-#define BOOSTER_BT                  10000
+#define BOOSTER_BT                  14000
 #define BOOSTER_HEALTH              ABHM(150)
 #define BOOSTER_REGEN               8
 #define BOOSTER_SPLASHDAMAGE        50
@@ -323,7 +337,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define LOCKBLOB_K_SCALE            1.0f
 
 #define OVERMIND_BP                 0
-#define OVERMIND_BT                 20000
+#define OVERMIND_BT                 24000 //Vanilla = 20000
 #define OVERMIND_HEALTH             ABHM(750)
 #define OVERMIND_REGEN              6
 #define OVERMIND_SPLASHDAMAGE       15
@@ -554,7 +568,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define HUMAN_DETONATION_DELAY      5000
 
 #define HSPAWN_BP                   10
-#define HSPAWN_BT                   15000
+#define HSPAWN_BT                   18000 //Compensate for alien's egg build time
 #define HSPAWN_HEALTH               HBHM(310)
 #define HSPAWN_SPLASHDAMAGE         50
 #define HSPAWN_SPLASHRADIUS         100
@@ -605,14 +619,15 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 #define DC_VALUE                    HBVM(DC_BP)
 
 #define ARMOURY_BP                  10
-#define ARMOURY_BT                  15000
+#define ARMOURY_BT                  16000
 #define ARMOURY_HEALTH              HBHM(420)
 #define ARMOURY_SPLASHDAMAGE        50
 #define ARMOURY_SPLASHRADIUS        100
 #define ARMOURY_VALUE               HBVM(ARMOURY_BP)
 
 #define REACTOR_BP                  0
-#define REACTOR_BT                  30000
+#define REACTOR_BT                  26000 //Actual build timers was somewhere around here, but don't
+                                          //bring it too high otherwise people will complain
 #define REACTOR_HEALTH              HBHM(930)
 #define REACTOR_SPLASHDAMAGE        200
 #define REACTOR_SPLASHRADIUS        300
@@ -699,6 +714,7 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
 #define CUBOID_MINVOLUME                150
+#define CUBOID_MAXVOLUME                1000000 //100 units cubed
 //everything else is on the bottom of bg_misc.c
 
 /*

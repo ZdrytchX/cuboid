@@ -706,6 +706,15 @@ static float GetNonLocDamageModifier( gentity_t *targ, int class )
 
   modifier = !scale ? 1.0f : 1.0f + ( modifier / scale - 1.0f ) * area;
   
+  if(mod != MOD_LEVEL2_ZAP || mod != MOD_POISON || mod != MOD_LEVEL1_PCLOUD)
+  {
+  //ZdrytchX: Make non-loc damage weaker
+  modifier = modifier * modifier;
+  //Special Case for battlesuit
+  if(modifier < 0.2)
+  modifier = 0.2;
+  }
+  
   if( g_debugDamage.integer > 1 )
     G_Printf( "GetNonLocDamageModifier() modifier:%f, area:%f, scale:%f\n",
               modifier, area, scale );
@@ -1029,6 +1038,11 @@ void G_Damage( gentity_t *targ, gentity_t *inflictor, gentity_t *attacker,
       targ->s.eType == ET_BUILDABLE && targ->buildableTeam == TEAM_ALIENS )
   {
     return;
+  }
+  //Damage Reduction Modifier for buildables
+  if( mod == MOD_LEVEL4_BOMB && targ->s.eType == ET_BUILDABLE /*&& targ->buildableTeam == TEAM_HUMANS*/ )
+  {
+    damage *= LEVEL4_BOMB_DMG_BUILD_MOD;
   }
 
   // check for completely getting out of the damage
