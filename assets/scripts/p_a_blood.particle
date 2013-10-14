@@ -1,0 +1,174 @@
+alienBleedPS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync			greenblood01frame01 greenblood01frame02 greenblood01frame03 greenblood01frame04 greenblood01frame05 greenblood01frame06 greenblood01frame07 greenblood01frame08 
+      
+	  displacement          0 0 0 ~8
+
+      radius                0 6 9
+      alpha                 0 1 0
+      rotation              0 ~360 -
+      bounce                0
+
+      lifeTime              400~100
+    }
+    count   1
+    delay   0
+    period  0 - 0
+  }
+  thirdPersonOnly
+}
+
+alienBuildableBleedPS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync			greenblood01frame01 greenblood01frame02 greenblood01frame03 greenblood01frame04 greenblood01frame05 greenblood01frame06 greenblood01frame07 greenblood01frame08 
+      
+	  displacement          0 0 0 ~8
+
+      radius                0 6 9
+      alpha                 0 1 0
+      rotation              0 ~360 -
+      bounce                0
+
+      lifeTime              400~100
+    }
+    count   1
+    delay   0
+    period  0 - 0
+  }
+  thirdPersonOnly
+}
+
+alienBuildableDamagedPS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync 			greenblood03frame01 greenblood03frame02 greenblood03frame03 greenblood03frame04 greenblood03frame05 greenblood03frame06 greenblood03frame07
+
+	  displacement			0 0 0 ~4
+	  
+      velocityType      	normal
+      velocityDir       	linear
+      velocityMagnitude 	100
+      velocity          	0 0 0 ~20
+
+      accelerationType      static
+      accelerationDir       linear
+      accelerationMagnitude 200
+      acceleration          0 0 -2 0
+
+      radius				0 4.0 16.0
+      alpha  				0 1.0 1.0
+      rotation				0 ~360 -
+	  
+      lifeTime 400~50%
+    }
+    count infinite
+    delay 0
+    period 400 - ~0%
+  }
+}
+
+alienBuildableDestroyedPS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync 			greenblood03frame01 greenblood03frame02 greenblood03frame03 greenblood03frame04 greenblood03frame05 greenblood03frame06 greenblood03frame07
+
+      displacement 			0 0 0 ~35
+      normalDisplacement  	80
+
+      velocityType      	static
+      velocityDir       	linear
+      velocityMagnitude 	30
+      velocity          	0 0 -2 ~0
+
+      radius 				0 10.0 20.0
+      alpha  				0 1.0 1.0
+      rotation 				0 ~360 -
+      bounce 				0.0
+
+      lifeTime 500~50%
+    }
+
+    count 20
+    delay 0
+    period 0 - ~0%
+  }
+
+  ejector
+  {
+    particle
+    {
+      shader sync 			greenblood01frame01 greenblood01frame02 greenblood01frame03 greenblood01frame04 greenblood01frame05 greenblood01frame06 greenblood01frame07 greenblood01frame08
+
+      displacement 			0 0 30 ~0
+
+      velocityType      	static
+      velocityDir       	linear
+      velocityMagnitude 	300~75%
+      velocity          	0 0 1 ~40
+
+      accelerationType      static
+      accelerationDir       linear
+      accelerationMagnitude 800
+      acceleration          0 0 -2 0
+
+      radius				0 10.0 10.0
+      alpha					0 1.0 1.0
+      rotation				0 ~360 -
+      bounce				0.0
+
+      lifeTime 400
+    }
+
+    count 32
+    delay 0
+    period 10 - ~0%
+  }
+}
+
+alienEvolvePS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync			greenblood01frame01 greenblood01frame02 greenblood01frame03 greenblood01frame04 greenblood01frame05 greenblood01frame06 greenblood01frame07 greenblood01frame08 
+
+      displacement			0 0 0 ~0
+
+      velocityType      	static
+      velocityDir       	linear
+      velocityMagnitude 	150~75%
+      velocity          	0 0 1 ~50
+
+      accelerationType      static
+      accelerationDir       linear
+      accelerationMagnitude 800
+      acceleration          0 0 -1 0
+
+      radius 				0 5.0 30.0
+      alpha  				0 1.0 0.0
+      rotation 				0 ~360 -
+      bounce 				0.2
+
+      lifeTime 1000
+    }
+
+    count 30
+    delay 0
+    period 5 - ~0%
+  }
+}

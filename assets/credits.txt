@@ -8,6 +8,10 @@ Cuboid - a Tremulous 1.2 mod focused on cuboids and fixing balance issues.
        - a proper Helmet Mk2 texture
 
     CHANGELOG
+Version  Release date
+______________________________________________________________________________________________
+0.1.3 - ZdrytchX's Branch
+         ???
 
 Version  Release date
 ______________________________________________________________________________________________
@@ -37,18 +41,19 @@ NON-GAMEPLAY:
 - Jetpack now has new, less annoying sounds.
 - Flamer sounds better.
 - New Marauder zapping sounds.
+________________________________________________________________________________________
 
     CREDITS
 
   Programming:
 theinvsblman (lead programmer)
-ViruS (a.k.a. ZdrytchX) (implementing CPMA physics)
+ViruS (a.k.a. ZdrytchX) (implementing CPMA physics + various other minor stuff)
 
 Source code and assets are available at https://github.com/enneract/cuboid under the terms of the GNU GPL.
 This mod is based on Tremulous (Darklegion Development), which is based on Quake III: Arena (id Software).
   
    Art
-Pikachu, http//spiney.me/ (sounds)
+Pikachu, http//spiney.me/ (sounds, particle system)
 theinvsblman (Cuboid-related stuff)
 
 Below is the full list of all resources used by the mod.

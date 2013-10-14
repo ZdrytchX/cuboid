@@ -1,0 +1,94 @@
+models/weapons/grenade/impactTrailPS
+{
+  ejector
+  {
+    particle
+    {
+	  shader sync flame01 flame02 flame03 flame04 flame05 flame06 flame07 flame08 flame09 flame10 flame11 flame12 flame13 flame14 flame15 flame16 flame17 flame18 flame19 flame20
+      displacement 0 0 0 ~0
+
+      velocityType      static
+      velocityDir       linear
+      velocityMagnitude 30
+      velocity          0 0 -1 ~0
+
+      radius 0 30.0 10.0
+      alpha  0 1.0 0.0
+      rotation 0 ~360 -
+      bounce 0
+
+      lifeTime 500
+    }
+
+    count 5
+    delay 0
+    period 40 - 0
+  }
+}
+
+models/weapons/grenade/impactPS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync flame01 flame02 flame03 flame04 flame05 flame06 flame07 flame08 flame09 flame10 flame11 flame12 flame13 flame14 flame15 flame16 flame17 flame18 flame19 flame20
+
+      displacement 0 0 11 ~0
+
+      velocityType      static
+      velocityDir       linear
+      velocityMagnitude 200~75%
+      velocity          0 0 1 ~10
+
+      accelerationType      static
+      accelerationDir       linear
+      accelerationMagnitude 300
+      acceleration          0 0 -1 0
+
+      radius 0 10.0 60.0
+      alpha  0 1.0 0.0
+      rotation 0 ~360 -
+      bounce 0
+	  
+      lifeTime 500
+
+      childSystem models/weapons/grenade/impactTrailPS
+    }
+
+    count 5
+    delay 0
+    period 10 - ~0%
+  }
+
+  ejector
+  {
+    particle
+    {
+      shader sync gfx/sprites/spark
+
+      displacement 0 0 8 ~0
+
+      velocityType      static
+      velocityDir       linear
+      velocityMagnitude 700~3%
+      velocity          0 0 1 ~180
+
+      accelerationType      static
+      accelerationDir       linear
+      accelerationMagnitude 800
+      acceleration          0 0 1 0
+
+      radius 0 10.0 2.0
+      alpha  0 1.0 0.0
+      rotation 0 ~360 -
+      bounce 0
+
+      lifeTime 300
+    }
+
+    count 150
+    delay 0
+    period 0 - ~0%
+  }
+}

@@ -1,0 +1,24 @@
+models/weapons/blaster/missilePS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync gfx/blaster/orange_particle
+
+      displacement 0 0 0 ~2.0
+
+      parentVelocityFraction 0.5
+
+      radius 0 1.5 0.0
+      alpha  0 1.0 0.0
+      bounce 0.01
+
+      lifeTime 400
+    }
+
+    count infinite
+    delay 0
+    period 10 - ~0%
+  }
+}

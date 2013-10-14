@@ -1,0 +1,34 @@
+models/weapons/flamer/muzzlePS
+{
+  ejector
+  {
+    particle
+    {
+      shader sync flame01 flame02 flame03 flame04 flame05 flame06 flame07 flame08 flame09 flame10 flame11 flame12 flame13 flame14 flame15 flame16 flame17 flame18 flame19 flame20
+      displacement 0 0 0 ~0.0
+
+      parentVelocityFraction 0.65
+
+      velocityType      cent
+      velocityDir       linear
+      velocityMagnitude 300
+      velocity          0 0 0 ~0
+
+      physicsRadius 15
+
+      radius 40 2.0 50.0
+      alpha  0 1.0 1.0
+      rotation 0 ~360 -
+      
+	  bounce 0.0
+	  
+	  dynamicLight 0 64 64 {1.0,1.0,0.5}
+
+      lifeTime 800
+    }
+
+    count infinite
+    delay 0
+    period 25 - ~0%
+  }
+}
